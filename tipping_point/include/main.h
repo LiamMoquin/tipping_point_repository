@@ -1,3 +1,4 @@
+#pragma once
 /**
  * \file main.h
  *
@@ -35,6 +36,8 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
+#include "driver.h"
+#include "robotconfig.h"
 
 /**
  * You should add more #includes here
