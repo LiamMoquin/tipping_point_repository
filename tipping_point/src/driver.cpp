@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 void xdrive(){
     int power = master.get_analog(ANALOG_RIGHT_Y);
     int turn = master.get_analog(ANALOG_RIGHT_X);
