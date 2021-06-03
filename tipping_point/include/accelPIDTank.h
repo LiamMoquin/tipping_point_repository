@@ -3,4 +3,6 @@
 
 extern double degToRotate;
 
-void trvlDist(void);
+void sDSAccel(double dist, double startPower, double endPower, double rampUpValue);
+
+void cDSAccel(double startPower, double endPower, double rampUpValue);
