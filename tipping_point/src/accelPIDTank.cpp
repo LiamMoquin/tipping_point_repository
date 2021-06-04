@@ -3,8 +3,8 @@
 double degToRotate;
 double lastError;
 double error;
-double dsakP = 0.2;
-double dsakD = 0;
+double kP = 0.2;
+double kD = 0;
 
 void mtrReset(){
     lf.tare_position();
@@ -27,13 +27,13 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
     while(motoravg >= totalDegrees){
         error = abs(lb.get_position()) - abs(rb.get_position());
 
-        double motoravg = (lb.get_position() + rb.get_position()) / 2;
+        motoravg = (lb.get_position() + rb.get_position()) / 2;
         double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;
         
-        lb.move_velocity(((error * dsakP) + dsakD * (error - lastError)) + accelCalcOutput);
-        lf.move_velocity(((error * dsakP) + dsakD * (error - lastError)) + accelCalcOutput);
-        rb.move_velocity(accelCalcOutput - ((error * dsakP) + dsakD * (error - lastError)));
-        rf.move_velocity(accelCalcOutput - ((error * dsakP) + dsakD * (error - lastError)));
+        lb.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
+        lf.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
+        rb.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
+        rf.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
 
         error = lastError;
 
@@ -52,15 +52,40 @@ void cDSAccel(double startPower, double endPower, double rampUpValue){
     while(motoravg >= totalDegrees){
         error = abs(lb.get_position()) - abs(rb.get_position());
 
-        double motoravg = (lb.get_position() + rb.get_position()) / 2;
+        motoravg = (lb.get_position() + rb.get_position()) / 2;
         double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;
         
-        lb.move_velocity(((error * dsakP) + dsakD * (error - lastError)) + accelCalcOutput);
-        lf.move_velocity(((error * dsakP) + dsakD * (error - lastError)) + accelCalcOutput);
-        rb.move_velocity(accelCalcOutput - ((error * dsakP) + dsakD * (error - lastError)));
-        rf.move_velocity(accelCalcOutput - ((error * dsakP) + dsakD * (error - lastError)));
+        lb.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
+        lf.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
+        rb.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
+        rf.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
         error = lastError;
 
         motoravg = ((lb.get_position() + rb.get_position()) / 2);
+    }
+}
+
+
+
+
+
+void DSDecel(double startPower, double endPower, double rampUpValue){
+    double motoravg;
+    
+    double totalDegrees = degToRotate * rampUpValue;
+
+    while(motoravg >= totalDegrees){
+        error = abs(lb.get_position()) - abs(rb.get_position());
+
+        motoravg = (abs(lb.get_position()) + abs(rb.get_position())) / 2;
+        double decelCalcOutput = (endPower - startPower) * (motoravg / totalDegrees) + startPower;
+
+        lb.move_velocity(decelCalcOutput + ((error * kP) + kD * (error - lastError)));
+        lf.move_velocity(decelCalcOutput + ((error * kP) + kD * (error - lastError)));
+        rb.move_velocity(decelCalcOutput - ((error * kP) + kD * (error - lastError)));
+        rf.move_velocity(decelCalcOutput - ((error * kP) + kD * (error - lastError)));
+        error = lastError;
+
+        motoravg = (lb.get_position() + rb.get_position()) / 2;
     }
 }
