@@ -1,8 +1,7 @@
 #pragma once
 #include "main.h"
 
-extern double degToRotate;
-
+//makes these global functions
 void sDSAccel(double dist, double startPower, double endPower, double rampUpValue);
 
 void cDSAccel(double startPower, double endPower, double rampUpValue);

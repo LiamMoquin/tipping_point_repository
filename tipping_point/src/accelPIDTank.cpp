@@ -1,11 +1,13 @@
 #include "main.h"
 
-double degToRotate;
-double lastError;
-double error;
-double kP = 0.2;
-double kD = 0;
+//setting up variables
+double degToRotate;//how many degrees the wheels need to rotate in total
+double lastError;//the error in the last run
+double error;//the current error
+double kP = 0.2;//kP tuning value
+double kD = 0;//kD tuning value
 
+//resets motor values
 void mtrReset(){
     lf.tare_position();
     rf.tare_position();
@@ -13,38 +15,43 @@ void mtrReset(){
     rb.tare_position();
 }
 
-void sDSAccel(double dist, double startPower, double endPower, double rampUpValue){
-    double motoravg;
-    error = 0;
-    lastError = 0;
+//start drive straight acceleration program
+void sDSAccel(double dist, double startPower, double endPower, double rampUpValue){//takes the distance, the startpower, the endpower and over what distance of the total to accelerate over
+    double motoravg;//defines the variable for the motor avg
+    error = 0;//sets the error to 0
+    lastError = 0;//sets the last error to 0
     
     mtrReset();
 
+    //calculates the degrees needed to move
     degToRotate = dist/(4*okapi::pi)*360;//distance in inches / by (the diameter of the wheels * pi) converted to degrees
 
+    //how many degrees to move in this function
     double totalDegrees = degToRotate * rampUpValue;
     
+    //while motor average is greater than or equal to total degrees
     while(motoravg >= totalDegrees){
-        error = abs(lb.get_position()) - abs(rb.get_position());
+        error = abs(lb.get_position()) - abs(rb.get_position());//sets the error to the absolute value of the back motors
 
-        motoravg = (lb.get_position() + rb.get_position()) / 2;
-        double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;
+        motoravg = (lb.get_position() + rb.get_position()) / 2;//sets the motor average to to the back motors /2
+        double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;//calculates the speed at which to accel
         
+        //tells the motors to move at a speed
         lb.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
         lf.move_velocity(((error * kP) + kD * (error - lastError)) + accelCalcOutput);
         rb.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
         rf.move_velocity(accelCalcOutput - ((error * kP) + kD * (error - lastError)));
 
-        error = lastError;
+        lastError = error;//sets last error to whatever error was this run
 
-        motoravg = ((lb.get_position() + rb.get_position()) / 2);
+        motoravg = ((lb.get_position() + rb.get_position()) / 2);//gets the average between the 2 back motors
     }
 }
 
 
-
-
-void cDSAccel(double startPower, double endPower, double rampUpValue){
+//continue drive straight acceleration code
+//this code is different from sDSAccel because it doesn't calculate the distance or reset the errors
+void cDSAccel(double startPower, double endPower, double rampUpValue){//missing the distance input from sDSAccel
     double motoravg;
 
     double totalDegrees = degToRotate * rampUpValue;
@@ -66,13 +73,11 @@ void cDSAccel(double startPower, double endPower, double rampUpValue){
 }
 
 
-
-
-
-void DSDecel(double startPower, double endPower, double rampUpValue){
+//lowers the speed of the robot
+void DSDecel(double startPower, double endPower, double rampDownValue){
     double motoravg;
     
-    double totalDegrees = degToRotate * rampUpValue;
+    double totalDegrees = degToRotate * rampDownValue;
 
     while(motoravg >= totalDegrees){
         error = abs(lb.get_position()) - abs(rb.get_position());
