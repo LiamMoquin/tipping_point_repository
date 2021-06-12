@@ -1,6 +1,7 @@
 #include "main.h"
 
 //setting up motors and controllers
+pros::Imu imu_sensor(5);
 pros::Controller master (pros::E_CONTROLLER_MASTER);
 pros::Controller partner (pros::E_CONTROLLER_PARTNER);
 pros::Motor lf (1, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);

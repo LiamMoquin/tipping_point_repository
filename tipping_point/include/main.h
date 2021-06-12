@@ -39,6 +39,8 @@
 #include "driver.h"
 #include "robotconfig.h"
 #include "accelPIDTank.h"
+#include "balance.h"
+#include "autonFunctions.h"
 
 /**
  * You should add more #includes here
