@@ -2,7 +2,7 @@
 #include "main.h"
 
 //defining the devices as global
-extern pros::Imu Imu_sensor;
+extern pros::Imu imu_sensor;
 extern pros::Controller master;
 extern pros::Controller partner;
 extern pros::Motor lf;
