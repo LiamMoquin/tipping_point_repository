@@ -7,7 +7,7 @@ double bErrorRange = 6;
 void balance(){
     double error = (0 - imu_sensor.get_pitch());
     double lastError = 0;
-    while(abs(error) < bErrorRange){
+    while(abs(error) > bErrorRange){
         error = (0 - imu_sensor.get_pitch());
         
         lb.move_velocity((error * bkP) + bkD * (error - lastError));
