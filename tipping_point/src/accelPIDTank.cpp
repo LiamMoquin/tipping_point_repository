@@ -1,7 +1,7 @@
 #include "main.h"
 
 //setting up variables
-double degToRotate;//how many degrees the wheels need to rotate in total
+double totalDegrees;//how many degrees the wheels need to rotate in total
 double lastError;//the error in the last run
 double error;//the current error
 double akP = 0.2;//kP tuning value
@@ -24,17 +24,17 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
     mtrReset();
 
     //calculates the degrees needed to move
-    degToRotate = dist/(4*okapi::pi)*360;//distance in inches / by (the diameter of the wheels * pi) converted to degrees
+    totalDegrees = dist/(4*okapi::pi)*360;//distance in inches / by (the diameter of the wheels * pi) converted to degrees
 
     //how many degrees to move in this function
-    double totalDegrees = degToRotate * rampUpValue;
+    double degtoRotate = totalDegrees * rampUpValue;
     
     //while motor average is greater than or equal to total degrees
-    while(motoravg >= totalDegrees){
+    while(motoravg >= degtoRotate){
         error = abs(lb.get_position()) - abs(rb.get_position());//sets the error to the absolute value of the back motors
 
         motoravg = (lb.get_position() + rb.get_position()) / 2;//sets the motor average to to the back motors /2
-        double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;//calculates the speed at which to accel
+        double accelCalcOutput = (endPower - startPower)*(motoravg / degtoRotate) + startPower;//calculates the speed at which to accel
         
         //tells the motors to move at a speed
         lb.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);
@@ -54,13 +54,13 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
 void cDSAccel(double startPower, double endPower, double rampUpValue){//missing the distance input from sDSAccel
     double motoravg;
 
-    double totalDegrees = degToRotate * rampUpValue;
+    double degToRotate = totalDegrees * rampUpValue;
     
-    while(motoravg >= totalDegrees){
+    while(motoravg >= degToRotate){
         error = abs(lb.get_position()) - abs(rb.get_position());
 
         motoravg = (lb.get_position() + rb.get_position()) / 2;
-        double accelCalcOutput = (endPower - startPower)*(motoravg / totalDegrees) + startPower;
+        double accelCalcOutput = (endPower - startPower)*(motoravg / degToRotate) + startPower;
         
         lb.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);
         lf.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);
@@ -77,13 +77,13 @@ void cDSAccel(double startPower, double endPower, double rampUpValue){//missing 
 void DSDecel(double startPower, double endPower, double rampDownValue){
     double motoravg;
     
-    double totalDegrees = degToRotate * rampDownValue;
+    double degToRotate = totalDegrees * rampDownValue;
 
-    while(motoravg >= totalDegrees){
+    while(motoravg >= degToRotate){
         error = abs(lb.get_position()) - abs(rb.get_position());
 
-        motoravg = (abs(lb.get_position()) + abs(rb.get_position())) / 2;
-        double decelCalcOutput = (endPower - startPower) * (motoravg / totalDegrees) + startPower;
+        motoravg = (lb.get_position() + (rb.get_position()) / 2;
+        double decelCalcOutput = (endPower - startPower) * (motoravg / degToRotate) + startPower;
 
         lb.move_velocity(decelCalcOutput + ((error * akP) + akD * (error - lastError)));
         lf.move_velocity(decelCalcOutput + ((error * akP) + akD * (error - lastError)));
