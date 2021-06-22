@@ -6,4 +6,11 @@ double derivative;
 double tkP = 0.6;
 double tkD = 0.8;
 
-while(>abs(imu_sensor()))
+
+void turn(double target)
+{
+    while(target - 1 < abs(imu_sensor.get_heading()) && abs(imu_sensor.get_heading()) < target + 1)
+    {
+
+    }
+}

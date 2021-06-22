@@ -82,7 +82,7 @@ void DSDecel(double startPower, double endPower, double rampDownValue){
     while(motoravg >= degToRotate){
         error = abs(lb.get_position()) - abs(rb.get_position());
 
-        motoravg = (lb.get_position() + (rb.get_position()) / 2;
+        motoravg = (lb.get_position() + (rb.get_position())) / 2;
         double decelCalcOutput = (endPower - startPower) * (motoravg / degToRotate) + startPower;
 
         lb.move_velocity(decelCalcOutput + ((error * akP) + akD * (error - lastError)));
