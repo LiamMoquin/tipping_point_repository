@@ -16,3 +16,13 @@ void xdrive(){
     lb.move(lbPower);
     rb.move(rbPower);
 }
+
+void tdrive(){
+    int lSpeed = master.get_analog(ANALOG_LEFT_Y);
+    int rSpeed = master.get_analog(ANALOG_RIGHT_Y);
+
+    lf.move(lSpeed);
+    lb.move(lSpeed);
+    rf.move(rSpeed);
+    rb.move(rSpeed);
+}
