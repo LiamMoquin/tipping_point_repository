@@ -16,3 +16,10 @@ void xdrive(){
     lb.move(lbPower);
     rb.move(rbPower);
 }
+
+void tankDrive(){
+        lf.move(master.get_analog(ANALOG_LEFT_Y));
+        lb.move(master.get_analog(ANALOG_LEFT_Y));
+        rf.move(master.get_analog(ANALOG_RIGHT_Y));
+        rb.move(master.get_analog(ANALOG_RIGHT_Y));
+}
