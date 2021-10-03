@@ -2,5 +2,4 @@
 #include "main.h"
 
 void xdrive(void);
-
-void tankDrive(void);
+void tdrive(void);

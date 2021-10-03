@@ -17,9 +17,12 @@ void xdrive(){
     rb.move(rbPower);
 }
 
-void tankDrive(){
-        lf.move(master.get_analog(ANALOG_LEFT_Y));
-        lb.move(master.get_analog(ANALOG_LEFT_Y));
-        rf.move(master.get_analog(ANALOG_RIGHT_Y));
-        rb.move(master.get_analog(ANALOG_RIGHT_Y));
+void tdrive(){
+    int lSpeed = master.get_analog(ANALOG_LEFT_Y);
+    int rSpeed = master.get_analog(ANALOG_RIGHT_Y);
+
+    lf.move(lSpeed);
+    lb.move(lSpeed);
+    rf.move(rSpeed);
+    rb.move(rSpeed);
 }

@@ -59,6 +59,6 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
-		tankDrive();
+		tdrive();
 	}
 }
