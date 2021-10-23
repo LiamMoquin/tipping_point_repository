@@ -18,8 +18,16 @@ void xdrive(){
 }
 
 void tdrive(){
-    int lSpeed = master.get_analog(ANALOG_LEFT_Y);
-    int rSpeed = master.get_analog(ANALOG_RIGHT_Y);
+    int slow = 1;
+    if (master.get_digital(E_CONTROLLER_DIGITAL_B)){
+        slow = 4;
+    }
+    else if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
+        slow = 1;
+    }
+    
+    int lSpeed = master.get_analog(ANALOG_LEFT_Y) / slow;
+    int rSpeed = master.get_analog(ANALOG_RIGHT_Y)/slow;
 
     lf.move(lSpeed);
     lb.move(lSpeed);

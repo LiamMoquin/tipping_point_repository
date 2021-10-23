@@ -15,6 +15,7 @@ void mtrReset(){
     rb.tare_position();
 }
 
+
 //start drive straight acceleration program
 void sDSAccel(double dist, double startPower, double endPower, double rampUpValue){//takes the distance, the startpower, the endpower and over what distance of the total to accelerate over
     double motoravg;//defines the variable for the motor avg
