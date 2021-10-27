@@ -1,5 +1,5 @@
 #include "main.h"
-
+int slow = 1;
 //xdrive opcontroller function
 void xdrive(){
     int power = master.get_analog(ANALOG_RIGHT_Y);
@@ -18,7 +18,6 @@ void xdrive(){
 }
 
 void tdrive(){
-    int slow = 1;
     if (master.get_digital(E_CONTROLLER_DIGITAL_B)){
         slow = 4;
     }
