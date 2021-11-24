@@ -9,3 +9,5 @@ extern pros::Motor lf;
 extern pros::Motor rf;
 extern pros::Motor lb;
 extern pros::Motor rb;
+extern pros::Motor mt;
+extern pros::Motor ms;
