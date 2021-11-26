@@ -9,3 +9,28 @@ void trigCalc(double a = 54, double o = 27){
     //turn to angle
     //move dist
 }
+
+void turn(double tAngle){
+    double kP = 0.2; //tuning value
+    double kD = 0; //tuning value
+    double error = (tAngle - imu_sensor.get_heading()); //How far off from target angle
+    double lastError = 0; //error at end of last loop
+    double errorRange = 0.2; //maximum final error
+    int rol = 1; //should the robot turn right or left
+    if(error >= 180){ 
+        rol = -1; //sets rol to -1
+    }
+    else if(error < 180){
+        rol = 1;
+    }
+    while(abs(error) > errorRange){ //while the absolute value of error is greater than errorRange
+        error = (tAngle - imu_sensor.get_heading()); //error target angle - the current heading of the bot
+        
+        lb.move_velocity(((error * kP) + kD * (error - lastError)) * rol); //fancy math to move the motors
+        lf.move_velocity(((error * kP) + kD * (error - lastError)) * rol);
+        rb.move_velocity(((error * kP) + kD * (error - lastError)) * (rol * -1)); //fancy math to move the motors in reverse
+        rf.move_velocity(((error * kP) + kD * (error - lastError)) * (rol * -1));
+        
+        lastError = error; //last error = error
+    }
+}
