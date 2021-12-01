@@ -40,16 +40,26 @@ void tCont(){
     mt.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     mf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     int mtSpeed;
+    int mfSpeed;
     if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
         mtSpeed = 150;
+    }
+    if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
+        mtSpeed = -150;
     }
     else if((master.get_digital(E_CONTROLLER_DIGITAL_L1) && master.get_digital(E_CONTROLLER_DIGITAL_L2)) == false){
         mtSpeed = 0;
     }
-        int mtSpeed;
+
 
     if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
-        mtSpeed = -100;
+        mfSpeed = -100;
+    }
+    if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
+        mfSpeed = 100;
+    }
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_R1) && master.get_digital(E_CONTROLLER_DIGITAL_R2)) == false){
+        mfSpeed = 0;
     }
     mt.move(mtSpeed);
     mf.move(mfSpeed);
