@@ -32,4 +32,25 @@ void tdrive(){
     lb.move(lSpeed);
     rf.move(rSpeed);
     rb.move(rSpeed);
+
+    tCont();
+}
+
+void tCont(){
+    mt.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    mf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    int mtSpeed;
+    if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
+        mtSpeed = 150;
+    }
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_L1) && master.get_digital(E_CONTROLLER_DIGITAL_L2)) == false){
+        mtSpeed = 0;
+    }
+        int mtSpeed;
+
+    if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
+        mtSpeed = -100;
+    }
+    mt.move(mtSpeed);
+    mf.move(mfSpeed);
 }

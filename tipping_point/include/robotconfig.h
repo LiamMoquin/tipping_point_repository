@@ -10,4 +10,4 @@ extern pros::Motor rf;
 extern pros::Motor lb;
 extern pros::Motor rb;
 extern pros::Motor mt;
-extern pros::Motor ms;
+extern pros::Motor mf;

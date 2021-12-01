@@ -4,8 +4,6 @@ void trigCalc(double a = 54, double o = 27){
     
     double angle = tan(o/a);
     double dist = hypot(a, o);
-    print(0, 0, angle);
-    print(1, 0, dist);
     //turn to angle
     //move dist
 }
@@ -16,7 +14,7 @@ void turn(double tAngle){
     double error = (tAngle - imu_sensor.get_heading()); //How far off from target angle
     double lastError = 0; //error at end of last loop
     double errorRange = 0.2; //maximum final error
-    int rol = 1; //should the robot turn right or left
+    int rol = 1; //should the robot turn right or left -1 being left and 1 being right
     if(error >= 180){ 
         rol = -1; //sets rol to -1
     }
