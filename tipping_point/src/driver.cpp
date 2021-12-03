@@ -77,6 +77,7 @@ void tCont(){
     else if((master.get_digital(E_CONTROLLER_DIGITAL_R1) && master.get_digital(E_CONTROLLER_DIGITAL_R2)) == false){
         mfSpeed = 0;
     }
-    mt.move(mtSpeed);
+    mt1.move(mtSpeed);
+    mt2.move(mtSpeed);
     mf.move(mfSpeed);
 }
