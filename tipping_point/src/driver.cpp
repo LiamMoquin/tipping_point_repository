@@ -17,16 +17,23 @@ void xdrive(){
     rb.move(rbPower);
 }
 
-void tdrive(){
-    if (master.get_digital(E_CONTROLLER_DIGITAL_B)){
-        slow = 4;
-    }
-    else if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
-        slow = 1;
-    }
-    
+
+void stupidUselessGarbageDrive(){
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_LEFT_X);
+    int left = power + turn;
+    int right = power - turn;
+
+    lf.move(left);
+    lb.move(left);
+    rf.move(right);
+    rb.move(right);
+}
+
+
+void tdrive(){    
     int lSpeed = master.get_analog(ANALOG_LEFT_Y) / slow;
-    int rSpeed = master.get_analog(ANALOG_RIGHT_Y)/slow;
+    int rSpeed = master.get_analog(ANALOG_RIGHT_Y) / slow;
 
     lf.move(lSpeed);
     lb.move(lSpeed);
@@ -34,17 +41,26 @@ void tdrive(){
     rb.move(rSpeed);
 
     tCont();
+
+    if (master.get_digital(E_CONTROLLER_DIGITAL_B)){
+        slow = 4;
+    }
+    else if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
+        slow = 1;
+    }
+    if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
+        balance();
+    }
 }
 
+
 void tCont(){
-    mt.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    mf.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
     int mtSpeed;
     int mfSpeed;
-    if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
+    if((master.get_digital(E_CONTROLLER_DIGITAL_L1)) == true){
         mtSpeed = 150;
     }
-    if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_L2)) == true){
         mtSpeed = -150;
     }
     else if((master.get_digital(E_CONTROLLER_DIGITAL_L1) && master.get_digital(E_CONTROLLER_DIGITAL_L2)) == false){
@@ -53,10 +69,10 @@ void tCont(){
 
 
     if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
-        mfSpeed = -100;
-    }
-    if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
         mfSpeed = 100;
+    }
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
+        mfSpeed = -100;
     }
     else if((master.get_digital(E_CONTROLLER_DIGITAL_R1) && master.get_digital(E_CONTROLLER_DIGITAL_R2)) == false){
         mfSpeed = 0;
