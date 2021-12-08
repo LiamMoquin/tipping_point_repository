@@ -28,6 +28,11 @@ void stupidUselessGarbageDrive(){
     lb.move(left);
     rf.move(right);
     rb.move(right);
+
+    tCont();
+    if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
+        balance();
+    }
 }
 
 
@@ -35,10 +40,10 @@ void tdrive(){
     int lSpeed = master.get_analog(ANALOG_LEFT_Y) / slow;
     int rSpeed = master.get_analog(ANALOG_RIGHT_Y) / slow;
 
-    lf.move(lSpeed);
-    lb.move(lSpeed);
-    rf.move(rSpeed);
-    rb.move(rSpeed);
+    lf.move(-lSpeed);
+    lb.move(-lSpeed);
+    rf.move(-rSpeed);
+    rb.move(-rSpeed);
 
     tCont();
 
