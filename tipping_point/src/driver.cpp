@@ -63,10 +63,10 @@ void tCont(){
     int mtSpeed;
     int mfSpeed;
     if((master.get_digital(E_CONTROLLER_DIGITAL_L1)) == true){
-        mtSpeed = 150;
+        mtSpeed = 200;
     }
     else if((master.get_digital(E_CONTROLLER_DIGITAL_L2)) == true){
-        mtSpeed = -150;
+        mtSpeed = -200;
     }
     else if((master.get_digital(E_CONTROLLER_DIGITAL_L1) && master.get_digital(E_CONTROLLER_DIGITAL_L2)) == false){
         mtSpeed = 0;
