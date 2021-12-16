@@ -73,6 +73,14 @@ void tCont(){
     }
 
 
+    if (master.get_digital(E_CONTROLLER_DIGITAL_UP)){
+        piston.set_value(true);
+    }
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
+        piston.set_value(false);
+    }
+
+
     if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
         mfSpeed = 100;
     }

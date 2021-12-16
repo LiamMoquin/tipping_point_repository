@@ -11,7 +11,7 @@ pros::Motor rb (1, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREES
 pros::Motor mt1 (6, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor mt2 (7, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor mf (8, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-
+pros::ADIDigitalOut piston ('A', true);
 
 void vexcodeInit(void){
     //nothing to initialize

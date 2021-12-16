@@ -12,3 +12,4 @@ extern pros::Motor rb;
 extern pros::Motor mt1;
 extern pros::Motor mt2;
 extern pros::Motor mf;
+extern pros::ADIDigitalOut piston;
