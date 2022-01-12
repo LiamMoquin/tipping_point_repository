@@ -92,5 +92,6 @@ void tCont(){
     }
     mt1.move(mtSpeed);
     mt2.move(mtSpeed);
-    mf.move(mfSpeed);
+    sml1.move(mfSpeed);
+    sml2.move(-mfSpeed);
 }

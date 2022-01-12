@@ -40,15 +40,6 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	mf.move_relative(-300, 75);
-	delay(1800);
-	mf.move_relative(60, 75);
-	delay(300);
-	mf.move_relative(-30, 75);
-	delay(300);
-	mf.move_relative(60, 75);
-
-
 }
 
 /**

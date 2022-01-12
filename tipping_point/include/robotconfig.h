@@ -11,5 +11,6 @@ extern pros::Motor lb;
 extern pros::Motor rb;
 extern pros::Motor mt1;
 extern pros::Motor mt2;
-extern pros::Motor mf;
+extern pros::Motor sml1;
+extern pros::Motor sml2;
 extern pros::ADIDigitalOut piston;
