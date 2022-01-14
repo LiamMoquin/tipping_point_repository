@@ -18,9 +18,9 @@ void xdrive(){
 }
 
 
-void stupidUselessGarbageDrive(){
+void arcDrive(){
     int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(ANALOG_LEFT_X);
+    int turn = master.get_analog(-ANALOG_LEFT_X);
     int left = power + turn;
     int right = power - turn;
 

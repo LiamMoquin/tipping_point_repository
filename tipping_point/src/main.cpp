@@ -58,6 +58,6 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
-		tdrive();
+		arcDrive();
 	}
 }
