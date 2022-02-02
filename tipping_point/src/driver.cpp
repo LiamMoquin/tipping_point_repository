@@ -18,24 +18,6 @@ void xdrive(){
 }
 
 
-void arcDrive(){
-    int power = master.get_analog(ANALOG_LEFT_Y);
-    int turn = master.get_analog(-ANALOG_LEFT_X);
-    int left = power + turn;
-    int right = power - turn;
-
-    lf.move(left);
-    lb.move(left);
-    rf.move(right);
-    rb.move(right);
-
-    tCont();
-    if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
-        balance();
-    }
-}
-
-
 void tdrive(){    
     int lSpeed = master.get_analog(ANALOG_LEFT_Y) / slow;
     int rSpeed = master.get_analog(ANALOG_RIGHT_Y) / slow;

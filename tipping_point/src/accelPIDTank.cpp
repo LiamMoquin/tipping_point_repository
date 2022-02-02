@@ -38,7 +38,7 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
         double accelCalcOutput = (endPower - startPower)*(motoravg / degtoRotate) + startPower;//calculates the speed at which to accel
         
         //tells the motors to move at a speed
-        lb.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);
+        lb.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);    
         lf.move_velocity(((error * akP) + akD * (error - lastError)) + accelCalcOutput);
         rb.move_velocity(accelCalcOutput - ((error * akP) + akD * (error - lastError)));
         rf.move_velocity(accelCalcOutput - ((error * akP) + akD * (error - lastError)));

@@ -15,6 +15,7 @@ pros::Motor sml2 (6, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGR
 
 pros::ADIDigitalOut piston ('A', true);
 
+
 void vexcodeInit(void){
     //nothing to initialize
 }

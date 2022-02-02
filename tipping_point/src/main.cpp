@@ -40,6 +40,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+	autonLeft();
 }
 
 /**
@@ -58,6 +59,6 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
-		arcDrive();
+		tdrive();
 	}
 }

@@ -41,6 +41,7 @@
 #include "accelPIDTank.h"
 #include "balance.h"
 #include "autonFunctions.h"
+#include "autonLeft.h"
 
 /**
  * You should add more #includes here
