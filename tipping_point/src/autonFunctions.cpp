@@ -32,3 +32,8 @@ void turn(double tAngle){
         lastError = error; //last error = error
     }
 }
+
+void towerMove(double degrees, double speed = 75){
+    mt1.move_relative(degrees, speed);
+    mt2.move_relative(degrees, speed);
+}

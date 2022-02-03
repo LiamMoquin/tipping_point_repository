@@ -6,4 +6,5 @@ void autonLeft(){
     piston.set_value(true);
     pros::delay(350);
     piston.set_value(false);
+    towerMove(1200, 75);
 }

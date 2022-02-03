@@ -40,6 +40,11 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
+	//autonLeft();
+	lf.move_relative(360, 45);
+	lb.move_relative(360, 45);
+	rf.move_relative(360, 45);
+	rb.move_relative(360, 45);
 	autonLeft();
 }
 
