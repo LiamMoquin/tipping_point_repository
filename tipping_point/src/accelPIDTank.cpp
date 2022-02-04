@@ -4,8 +4,8 @@
 double totalDegrees;//how many degrees the wheels need to rotate in total
 double lastError;//the error in the last run
 double error;//the current error
-double akP = 0.2;//kP tuning value
-double akD = 0;//kD tuning value
+double akP = 0.6;//kP tuning value
+double akD = 0.1;//kD tuning value
 
 //resets motor values
 void mtrReset(){
@@ -18,7 +18,7 @@ void mtrReset(){
 
 //start drive straight acceleration program
 void sDSAccel(double dist, double startPower, double endPower, double rampUpValue){//takes the distance, the startpower, the endpower and over what distance of the total to accelerate over
-    double motoravg;//defines the variable for the motor avg
+    double motoravg = (lb.get_position() + rb.get_position()) / 2;//defines the variable for the motor avg
     error = 0;//sets the error to 0
     lastError = 0;//sets the last error to 0
     
@@ -29,7 +29,7 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
 
     //how many degrees to move in this function
     double degtoRotate = totalDegrees * rampUpValue;
-    
+
     //while motor average is greater than or equal to total degrees
     while(motoravg >= degtoRotate){
         error = abs(lb.get_position()) - abs(rb.get_position());//sets the error to the absolute value of the back motors
@@ -46,7 +46,9 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
         lastError = error;//sets last error to whatever error was this run
 
         motoravg = ((lb.get_position() + rb.get_position()) / 2);//gets the average between the 2 back motors
+        delay(25);
     }
+
 }
 
 
