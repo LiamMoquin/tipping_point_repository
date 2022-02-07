@@ -17,6 +17,32 @@ void xdrive(){
     rb.move(rbPower);
 }
 
+void arcDrive(){
+    lf.move(master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_LEFT_X)/2);
+    lb.move(master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_LEFT_X)/2);
+    rf.move(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2);
+    rb.move(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2);
+    
+    mt1.move(master.get_analog(ANALOG_RIGHT_Y));
+    mt2.move(master.get_analog(ANALOG_RIGHT_Y));
+
+    if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
+        piston.set_value(true);
+    }
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
+        piston.set_value(false);
+    }
+
+    if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
+        sml1.move(100);
+        sml2.move(100);
+    }
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)){
+        sml1.move(-100);
+        sml2.move(-100);
+    }
+}
+
 
 void tdrive(){    
     int lSpeed = master.get_analog(ANALOG_LEFT_Y) / slow;

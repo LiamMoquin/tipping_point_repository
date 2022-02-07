@@ -32,7 +32,7 @@ void sDSAccel(double dist, double startPower, double endPower, double rampUpValu
 
     //while motor average is greater than or equal to total degrees
     while(motoravg <= degtoRotate){
-        error = abs(lb.get_position()) - abs(rb.get_position());//sets the error to the absolute value of the back motors
+        error = abs(rb.get_position()) - abs(lb.get_position());//sets the error to the absolute value of the back motors
 
         motoravg = (lb.get_position() + rb.get_position()) / 2;//sets the motor average to to the back motors /2
         double accelCalcOutput = (endPower - startPower)*(motoravg / degtoRotate) + startPower;//calculates the speed at which to accel
