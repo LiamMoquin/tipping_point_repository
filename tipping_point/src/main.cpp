@@ -8,6 +8,11 @@
  */
 void initialize() {
 	imu_sensor.reset();
+	mt1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	mt2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	sml1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	sml2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD); 
+	piston.set_value(false);
 }
 
 /**

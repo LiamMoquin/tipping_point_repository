@@ -23,8 +23,8 @@ void arcDrive(){
     rf.move(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2);
     rb.move(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2);
     
-    mt1.move(master.get_analog(ANALOG_RIGHT_Y));
-    mt2.move(master.get_analog(ANALOG_RIGHT_Y));
+    mt1.move_velocity(master.get_analog(ANALOG_RIGHT_Y));
+    mt2.move_velocity(master.get_analog(ANALOG_RIGHT_Y));
 
     if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
         piston.set_value(true);
@@ -34,12 +34,16 @@ void arcDrive(){
     }
 
     if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
-        sml1.move(100);
-        sml2.move(100);
+        sml1.move_velocity(100);
+        sml2.move_velocity(100);
     }
     else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)){
-        sml1.move(-100);
-        sml2.move(-100);
+        sml1.move_velocity(-100);
+        sml2.move_velocity(-100);
+    }
+    else if(!(master.get_digital(E_CONTROLLER_DIGITAL_L1)) && !(master.get_digital(E_CONTROLLER_DIGITAL_L2))){
+        sml1.move_velocity(0);
+        sml1.move_velocity(0);
     }
 }
 
