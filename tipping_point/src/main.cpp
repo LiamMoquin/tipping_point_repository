@@ -20,7 +20,10 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+	sml1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	sml2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -45,7 +48,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	sDSAccel(20, 10, 100, .7);
+	sDSAccel(7, 10, 100, .7);
 }
 
 /**

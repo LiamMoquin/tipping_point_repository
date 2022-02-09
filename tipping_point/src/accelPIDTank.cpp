@@ -5,7 +5,7 @@ double totalDegrees;//how many degrees the wheels need to rotate in total
 double lastError;//the error in the last run
 double error;//the current error
 double akP = 1.6;//kP tuning value
-double akD = 3.2;//kD tuning value
+double akD = 0.62;//kD tuning value //might need to half this
 
 //resets motor values
 void mtrReset(){
