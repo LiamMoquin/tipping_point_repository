@@ -73,6 +73,10 @@ void cDSAccel(double startPower, double endPower, double rampUpValue){//missing 
 
         motoravg = ((lb.get_position() + rb.get_position()) / 2);
     }
+    lb.move_velocity(0);
+    lf.move_velocity(0);
+    rb.move_velocity(0);
+    rf.move_velocity(0);
 }
 
 

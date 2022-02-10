@@ -49,6 +49,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	sDSAccel(7, 10, 100, .7);
+	DSDecel(75, 0, 1);
 }
 
 /**
