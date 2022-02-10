@@ -48,8 +48,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	sDSAccel(7, 10, 100, .7);
-	DSDecel(75, 0, 1);
+	turn(180);
 }
 
 /**
