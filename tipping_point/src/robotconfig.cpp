@@ -11,7 +11,7 @@ pros::Motor rb (10, pros::E_MOTOR_GEARSET_06, true, pros::E_MOTOR_ENCODER_DEGREE
 pros::Motor mt1 (6, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor mt2 (18, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor sml1 (5, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor sml2 (7, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor tGrabber (17, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::ADIDigitalOut piston ('A', true);
 

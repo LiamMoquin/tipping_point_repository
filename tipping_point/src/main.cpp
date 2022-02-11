@@ -11,8 +11,8 @@ void initialize() {
 	mt1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	mt2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	sml1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	sml2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD); 
-	piston.set_value(false);
+	tGrabber.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD); 
+	piston.set_value(true);
 }
 
 /**
@@ -22,7 +22,7 @@ void initialize() {
  */
 void disabled() {
 	sml1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	sml2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	tGrabber.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
 /**
@@ -48,7 +48,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	turn(180);
+	piston.set_value(true);
+	towerMove(400, 75);
 }
 
 /**

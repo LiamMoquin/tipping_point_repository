@@ -35,15 +35,22 @@ void arcDrive(){
 
     if(master.get_digital(E_CONTROLLER_DIGITAL_L1)){
         sml1.move_velocity(100);
-        sml2.move_velocity(100);
     }
     else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)){
         sml1.move_velocity(-100);
-        sml2.move_velocity(-100);
     }
     else if(!(master.get_digital(E_CONTROLLER_DIGITAL_L1)) && !(master.get_digital(E_CONTROLLER_DIGITAL_L2))){
         sml1.move_velocity(0);
-        sml1.move_velocity(0);
+    }
+    
+    if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
+        tGrabber.move_velocity(1000);
+    }
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_Y)){
+        tGrabber.move_velocity(-1000);
+    }
+    else if (!(master.get_digital(E_CONTROLLER_DIGITAL_X)) && !(master.get_digital(E_CONTROLLER_DIGITAL_Y))){
+        tGrabber.move_velocity(0);
     }
 }
 
@@ -105,5 +112,4 @@ void tCont(){
     mt1.move(mtSpeed);
     mt2.move(mtSpeed);
     sml1.move(mfSpeed);
-    sml2.move(-mfSpeed);
 }

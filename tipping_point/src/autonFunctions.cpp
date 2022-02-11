@@ -33,6 +33,21 @@ void turn(double tAngle){
     }
 }
 
+void drive(double speed){
+    lf.move_velocity(speed);
+    lb.move_velocity(speed);
+    rf.move_velocity(speed);
+    rb.move_velocity(speed);
+    
+}
+
+void motorStop(){
+    lf.move_velocity(0);
+    lb.move_velocity(0);
+    rf.move_velocity(0);
+    rb.move_velocity(0);
+}
+
 void towerMove(double degrees, double speed = 75){
     mt1.move_relative(degrees, speed);
     mt2.move_relative(degrees, speed);
