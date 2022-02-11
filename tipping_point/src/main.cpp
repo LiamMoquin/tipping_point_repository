@@ -48,8 +48,10 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	piston.set_value(true);
-	towerMove(400, 75);
+	/*piston.set_value(false);
+	towerMove(840, 75);*/
+	lb.move_velocity(1000);
+	lf.move_velocity(1000);
 }
 
 /**
