@@ -14,3 +14,4 @@ extern pros::Motor mt2;
 extern pros::Motor sml1;
 extern pros::Motor tGrabber;
 extern pros::ADIDigitalOut piston;
+extern pros::Vision vision_sensor;

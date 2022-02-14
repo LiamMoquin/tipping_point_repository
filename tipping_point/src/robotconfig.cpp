@@ -13,6 +13,8 @@ pros::Motor mt2 (18, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGRE
 pros::Motor sml1 (5, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor tGrabber (17, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
+pros::Vision vision_sensor (1);
+
 pros::ADIDigitalOut piston ('A', true);
 
 

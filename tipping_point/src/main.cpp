@@ -7,6 +7,7 @@
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	vision_sensor.clear_led();
 	imu_sensor.reset();
 	mt1.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	mt2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
@@ -16,7 +17,7 @@ void initialize() {
 }
 
 /**
- * Runs while the robot is in the disabled state of Field Management System or
+ * Runs while the robot is in the disabled state of Field Management Sypstem or
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
@@ -102,6 +103,12 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
+		pros::vision_signature_s_t BLUE_SIG =
+		  pros::Vision::signature_from_utility(1, -2501, -1593, -2047, 5517, 11217, 8367, 2.100, 0);
+		vision_sensor.set_signature(1, BLUE_SIG);
+		vision_object_s_t rtn = vision_sensor.get_by_sig(1, 0, BLUE_SIG);
+		std::cout <<"sig: " << rtn.signature;
+		delay(2);
 		arcDrive();
 	}
 }
