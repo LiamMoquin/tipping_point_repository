@@ -52,3 +52,16 @@ void towerMove(double degrees, double speed = 75){
     mt1.move_relative(degrees, speed);
     mt2.move_relative(degrees, speed);
 }
+
+
+void driveStrt(double dist, double speed){
+    double kp = 0;
+    double kd = 0;
+
+    lf.tare_position;
+    lb.tare_position;
+    rf.tare_position;
+    rb.tare_position;
+
+    double motorAvg
+}
