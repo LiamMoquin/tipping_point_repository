@@ -103,12 +103,6 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
-		pros::vision_signature_s_t BLUE_SIG =
-		  pros::Vision::signature_from_utility(1, -2501, -1593, -2047, 5517, 11217, 8367, 2.100, 0);
-		vision_sensor.set_signature(1, BLUE_SIG);
-		vision_object_s_t rtn = vision_sensor.get_by_sig(1, 0, BLUE_SIG);
-		std::cout <<"sig: " << rtn.signature;
-		delay(2);
 		arcDrive();
 	}
 }

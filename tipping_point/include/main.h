@@ -42,7 +42,6 @@
 #include "balance.h"
 #include "autonFunctions.h"
 #include "autonLeft.h"
-#include "visionSensor.h"
 
 /**
  * You should add more #includes here
