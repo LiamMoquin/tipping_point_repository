@@ -17,18 +17,18 @@ void xdrive(){
     rb.move(rbPower);
 }
 
+int bof = 1;
 void arcDrive(){
-    int bof = 1;
     if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
         bof = -1;
     }
-    else if(master.get_digital(E_CONTROLLER_DIGITAL_UP)){
+    if(master.get_digital(E_CONTROLLER_DIGITAL_UP)){
         bof = 1;
     }
-    lf.move(bof*(master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_LEFT_X)/2));
-    lb.move(bof*(master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_LEFT_X)/2));
-    rf.move(bof*(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2));
-    rb.move(bof*(master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_LEFT_X)/2));
+    lf.move(bof*(master.get_analog(ANALOG_LEFT_Y) + bof * master.get_analog(ANALOG_LEFT_X)/2));
+    lb.move(bof*(master.get_analog(ANALOG_LEFT_Y) + bof * master.get_analog(ANALOG_LEFT_X)/2));
+    rf.move(bof*(master.get_analog(ANALOG_LEFT_Y) - bof * master.get_analog(ANALOG_LEFT_X)/2));
+    rb.move(bof*(master.get_analog(ANALOG_LEFT_Y) - bof * master.get_analog(ANALOG_LEFT_X)/2));
     
     mt1.move_velocity(master.get_analog(ANALOG_RIGHT_Y));
     mt2.move_velocity(master.get_analog(ANALOG_RIGHT_Y));

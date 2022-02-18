@@ -55,13 +55,30 @@ void towerMove(double degrees, double speed = 75){
 
 
 void driveStrt(double dist, double speed){
-    double kp = 0;
-    double kd = 0;
+    double kP = 0;
+    double kD = 0;
+    double error = 0;
+    double lastError = 0;
+    double dDeg = 0;
+    double tDeg = (dist/4*360);
+    double strtHead = imu_sensor.get_heading();
 
-    lf.tare_position;
-    lb.tare_position;
-    rf.tare_position;
-    rb.tare_position;
 
-    double motorAvg
+    lf.tare_position();
+    lb.tare_position();
+    rf.tare_position();
+    rb.tare_position();
+    
+    while (tDeg >= dDeg){
+        error =  (strtHead - imu_sensor.get_heading());
+
+        lb.move_velocity((error * kP) + kD * (error - lastError) + speed);    
+        lf.move_velocity((error * kP) + kD * (error - lastError) + speed);
+        rb.move_velocity((error * kP) + kD * (error - lastError) + speed);
+        rf.move_velocity((error * kP) + kD * (error - lastError) + speed);
+        
+        lastError = error;
+        dDeg = ((lb.get_position() + rb.get_position())/2);
+        delay(25);
+    }
 }

@@ -49,41 +49,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	//piston.set_value(false);
-	//towerMove(960, 75);
-
-	//right side
-	
-	lb.move_velocity(1000);
-	lf.move_velocity(1000);
-	rb.move_velocity(1000);
-	rf.move_velocity(1000);
-	delay(1700);
-	//motorStop();
-	piston.set_value(false);
-	//rf.move_velocity(-1000);
-	//rb.move_velocity(-1000);
-	//lf.move_velocity(-1000);
-	//lb.move_velocity(-1000);
-	//delay(1600);
-	//motorStop();
-
-
-	/*piston.set_value(false);
-	rf.move_velocity(1000);
-	rb.move_velocity(1000);
-	lf.move_velocity(-1000);
-	lb.move_velocity(-1000);
-	delay(600);
-	rb.move_velocity(-1000);
-	rf.move_velocity(-1000);
-	lb.move_velocity(-1000);
-	lf.move_velocity(-1000);
-	delay(1000);
-	lf.move_velocity(1000);
-	lb.move_velocity(1000);
-	rf.move_velocity(1000);
-	rb.move_velocity(1000);*/
+	driveStrt(10, 200);
 
 }
 
