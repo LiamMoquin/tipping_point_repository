@@ -79,41 +79,41 @@ void tdrive(){
     else if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
         slow = 1;
     }
-    if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
+    /*if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
         balance();
-    }
+    }*/
 }
 
 
 void tCont(){
     int mtSpeed;
     int mfSpeed;
-    if((master.get_digital(E_CONTROLLER_DIGITAL_L1)) == true){
+    if((master.get_digital(E_CONTROLLER_DIGITAL_R1)) == true){
         mtSpeed = 200;
     }
-    else if((master.get_digital(E_CONTROLLER_DIGITAL_L2)) == true){
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_R2)) == true){
         mtSpeed = -200;
     }
-    else if((master.get_digital(E_CONTROLLER_DIGITAL_L1) && master.get_digital(E_CONTROLLER_DIGITAL_L2)) == false){
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_R1) && master.get_digital(E_CONTROLLER_DIGITAL_R2)) == false){
         mtSpeed = 0;
     }
 
 
-    if (master.get_digital(E_CONTROLLER_DIGITAL_UP)){
+    if (master.get_digital(E_CONTROLLER_DIGITAL_L1)){
         piston.set_value(true);
     }
-    else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)){
         piston.set_value(false);
     }
 
 
-    if(master.get_digital(E_CONTROLLER_DIGITAL_R1)){
+    if(master.get_digital(E_CONTROLLER_DIGITAL_UP)){
         mfSpeed = 100;
     }
-    else if(master.get_digital(E_CONTROLLER_DIGITAL_R2)){
+    else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
         mfSpeed = -100;
     }
-    else if((master.get_digital(E_CONTROLLER_DIGITAL_R1) && master.get_digital(E_CONTROLLER_DIGITAL_R2)) == false){
+    else if((master.get_digital(E_CONTROLLER_DIGITAL_UP) && master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) == false){
         mfSpeed = 0;
     }
     mt1.move(mtSpeed);
