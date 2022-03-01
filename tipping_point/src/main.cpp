@@ -49,7 +49,10 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	driveStrt(10, 200);
+	lf.move_relative(2000, 170);
+	rf.move_relative(2000, 170);
+	lb.move_relative(2000, 170);
+	rb.move_relative(2000, 170);
 
 }
 
