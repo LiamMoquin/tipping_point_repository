@@ -49,10 +49,17 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	lf.move_relative(2000, 170);
-	rf.move_relative(2000, 170);
-	lb.move_relative(2000, 170);
-	rb.move_relative(2000, 170);
+	int strtDist = 2000;
+	lf.move_relative(strtDist, 170);
+	rf.move_relative(strtDist, 170);
+	lb.move_relative(strtDist, 170);
+	rb.move_relative(strtDist, 170);
+	piston.set_value(false);
+	lf.move_relative(-strtDist, 170);
+	rf.move_relative(-strtDist, 170);
+	lb.move_relative(-strtDist, 170);
+	rb.move_relative(-strtDist, 170);
+	piston.set_value(true);
 
 }
 
