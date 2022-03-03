@@ -50,16 +50,17 @@ void competition_initialize() {}
  */
 void autonomous() {
 	int strtDist = 2000;
-	lf.move_relative(strtDist, 170);
-	rf.move_relative(strtDist, 170);
-	lb.move_relative(strtDist, 170);
-	rb.move_relative(strtDist, 170);
+	lf.move_velocity(170);
+	lb.move_velocity(170);
+	rf.move_velocity(170);
+	rb.move_velocity(170);
 	piston.set_value(false);
-	lf.move_relative(-strtDist, 170);
-	rf.move_relative(-strtDist, 170);
-	lb.move_relative(-strtDist, 170);
-	rb.move_relative(-strtDist, 170);
-	piston.set_value(true);
+	delay(2000);
+	lf.move_velocity(-170);
+	lb.move_velocity(-170);
+	rf.move_velocity(-170);
+	rb.move_velocity(-170);
+	
 
 }
 
