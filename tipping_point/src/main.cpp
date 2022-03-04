@@ -49,19 +49,51 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	int strtDist = 2000;
+	int strtDist = 4000;
+	//move forward
 	lf.move_velocity(170);
 	lb.move_velocity(170);
 	rf.move_velocity(170);
 	rb.move_velocity(170);
+	//lower rear lift
+	sml1.tare_position();
+	sml1.move_relative(-2000, 200);
+	delay(strtDist);
+	//grab with piston
 	piston.set_value(false);
-	delay(2000);
+	//move back
 	lf.move_velocity(-170);
 	lb.move_velocity(-170);
 	rf.move_velocity(-170);
 	rb.move_velocity(-170);
-	
-
+	delay(strtDist - 800);
+	//drop with piston
+	piston.set_value(true);
+	delay(300);
+	//stop
+	rf.move_velocity(0);
+	rb.move_velocity(0);
+	lf.move_velocity(0);
+	lb.move_velocity(0);
+	delay(100);
+	//turn
+	rf.move_velocity(120);
+	rb.move_velocity(120);
+	lf.move_velocity(-120);
+	lb.move_velocity(-120);
+	delay(2600);
+	//stop turn and lift
+	rf.move_velocity(0);
+	rb.move_velocity(0);
+	lf.move_velocity(0);
+	lb.move_velocity(0);
+	delay(100);
+	rb.move_velocity(-170);
+	lb.move_velocity(-170);
+	delay(600);
+	sml1.move_relative(2000, 2000);
+	rb.move_velocity(0);
+	lb.move_velocity(0);
 }
 
 /**
@@ -80,6 +112,7 @@ void autonomous() {
 void opcontrol() {
 
 	while (true) {
-		tdrive();
+		//tdrive();
+		arcDrive();
 	}
 }
