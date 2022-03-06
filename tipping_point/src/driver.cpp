@@ -19,10 +19,10 @@ void xdrive(){
 
 int bof = 1;
 void arcDrive(){
-    if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
+    if(master.get_digital(E_CONTROLLER_DIGITAL_B)){
         bof = -1;
     }
-    if(master.get_digital(E_CONTROLLER_DIGITAL_UP)){
+    if(master.get_digital(E_CONTROLLER_DIGITAL_X)){
         bof = 1;
     }
     lf.move(bof*(master.get_analog(ANALOG_LEFT_Y) + bof * master.get_analog(ANALOG_LEFT_X)/2));
@@ -73,12 +73,12 @@ void tdrive(){
 
     tCont();
 
-    if (master.get_digital(E_CONTROLLER_DIGITAL_B)){
-        slow = 4;
-    }
-    else if (master.get_digital(E_CONTROLLER_DIGITAL_X)){
-        slow = 1;
-    }
+    // if (master.get_digital(E_CONTROLLER_DIGITAL_DOWN)){
+    //     slow = 4;
+    // }
+    // else if (master.get_digital(E_CONTROLLER_DIGITAL_UP)){
+    //     slow = 1;
+    // }
     /*if (master.get_digital(E_CONTROLLER_DIGITAL_Y)){
         balance();
     }*/

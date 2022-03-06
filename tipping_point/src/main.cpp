@@ -49,7 +49,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	int strtDist = 4000;
+	piston.set_value(true);
+	int strtDist = 4500;
 	//move forward
 	lf.move_velocity(170);
 	lb.move_velocity(170);
@@ -61,6 +62,16 @@ void autonomous() {
 	delay(strtDist);
 	//grab with piston
 	piston.set_value(false);
+	
+	// ctrl + k then ctrl + c to mass comment
+	// ctrl + k then ctrl + u to mass uncomment
+	
+	//WINPOINT LEFT!!!
+	//piston.set_value(false);
+	//delay(100);
+	//piston.set_value(true);
+
+	//MATCH AUTON!!!!!
 	//move back
 	lf.move_velocity(-170);
 	lb.move_velocity(-170);
@@ -88,12 +99,67 @@ void autonomous() {
 	lf.move_velocity(0);
 	lb.move_velocity(0);
 	delay(100);
+	//drags itself back with rear wheels
 	rb.move_velocity(-170);
 	lb.move_velocity(-170);
-	delay(600);
+	delay(900);
+	//raises rear lift to lock mogo
 	sml1.move_relative(2000, 2000);
+	//stops rear wheels
 	rb.move_velocity(0);
 	lb.move_velocity(0);
+
+	//SKILLS AUTON!!!
+	// //turn
+	// rf.move_velocity(-120);
+	// rb.move_velocity(-120);
+	// lb.move_velocity(120);
+	// lf.move_velocity(120);
+	// delay(1400);
+	// //back up
+	// sml1.move_relative(-2000, 2000);
+	// rb.move_velocity(-120);
+	// rf.move_velocity(-120);
+	// lf.move_velocity(-120);
+	// lb.move_velocity(-120);
+	// delay(5000);
+	// lf.move_velocity(0);
+	// lb.move_velocity(0);
+	// sml1.move_relative(2000, 2000);
+	// delay(1000);
+	// lf.move_velocity(-120);
+	// lb.move_velocity(-120);
+	// //pickup with rear mogo lift
+	// //turn
+	// rb.move_velocity(120);
+	// rf.move_velocity(120);
+	// delay(1500);
+	// rb.move_velocity(200);
+	// rf.move_velocity(200);
+	// lb.move_velocity(200);
+	// lf.move_velocity(200);
+	// delay(4500);
+	// lf.move_velocity(0);
+	// lb.move_velocity(0);
+	// rf.move_velocity(0);
+	// rb.move_velocity(0);
+	// //drop mogo front
+	// piston.set_value(true);
+	// //turn and pickup colored mogo
+	// lf.move_velocity(-170);
+	// lb.move_velocity(-170);
+	// rf.move_velocity(170);
+	// rb.move_velocity(170);
+	// sml1.move_absolute(-2000, 2000);
+	// delay(1400);
+	// piston.set_value(false);
+	// delay(1000);
+	// //move forward
+	// lb.move_velocity(170);
+	// lf.move_velocity(170);
+	
+	
+	
 }
 
 /**
